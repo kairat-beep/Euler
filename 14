@@ -1,0 +1,19 @@
+records = []
+current = 1
+storage = dict()
+while current < 1000000:
+    step = 0
+    temp = current
+    while temp != 1:
+        if temp in storage:
+            step += storage[temp]
+            break
+        step += 1
+        if temp %2 == 0:
+            temp = temp/2
+        else:
+            temp = temp * 3 + 1
+    storage[current] = step
+    records.append((current,step))
+    current += 1
+print(max(records , key=lambda x:x[1]))
